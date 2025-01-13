@@ -17,16 +17,22 @@ from openai import OpenAI
 import base64
 import requests
 
+# Define API details
+model = "meta-llama/Llama-3.3-70B-Instruct"
+openai_api_key = st.secrets.get("OPENAI_API") or os.getenv("OPENAI_API")
+openai_api_base = st.secrets.get("OPENAI_API_BASE") or os.getenv("OPENAI_API_BASE", "https://llm.dsrs.illinois.edu/v1")
+
+# Check if API key is set
+if not openai_api_key:
+    st.error("OpenAI API key is not set. Please check Streamlit secrets or .env file.")
+    st.stop()
 
 # Initialize OpenAI client
-model = "meta-llama/Llama-3.3-70B-Instruct"
-openai_api_key = "ADD API KEY"
-openai_api_base = "https://llm.dsrs.illinois.edu/v1"
-
 client = OpenAI(
     api_key=openai_api_key,
     base_url=openai_api_base,
 )
+
 
 GEOJSON_URLS = {
     "US": "https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json",
