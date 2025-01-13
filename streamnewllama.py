@@ -20,7 +20,7 @@ import requests
 
 # Initialize OpenAI client
 model = "meta-llama/Llama-3.3-70B-Instruct"
-openai_api_key = "nXslbJrLTUa8GeeNmQ6UKmZxvP5idzeJrCF0X1-XbEc"
+openai_api_key = ""
 openai_api_base = "https://llm.dsrs.illinois.edu/v1"
 
 client = OpenAI(
