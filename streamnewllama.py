@@ -18,10 +18,16 @@ import base64
 import requests
 
 
-# Initialize OpenAI client
+# Define API details
 model = "meta-llama/Llama-3.3-70B-Instruct"
-openai_api_key = ""
-openai_api_base = "https://llm.dsrs.illinois.edu/v1"
+openai_api_key = st.secrets.get("OPENAI_API") or os.getenv("OPENAI_API")
+openai_api_base = st.secrets.get("OPENAI_API_BASE") or os.getenv("OPENAI_API_BASE", "https://llm.dsrs.illinois.edu/v1")
+
+# Check if API key is set
+if not openai_api_key:
+    st.error("OpenAI API key is not set. Please check Streamlit secrets or .env file.")
+    st.stop()
+
 
 client = OpenAI(
     api_key=openai_api_key,
