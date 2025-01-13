@@ -19,8 +19,8 @@ import requests
 
 # Define API details
 model = "meta-llama/Llama-3.3-70B-Instruct"
-openai_api_key = st.secrets.get("OPENAI_API") or os.getenv("OPENAI_API")
-openai_api_base = st.secrets.get("OPENAI_API_BASE") or os.getenv("OPENAI_API_BASE", "https://llm.dsrs.illinois.edu/v1")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API") or os.getenv("OPENAI_API")
+OPENAI_API_BASE = st.secrets.get("OPENAI_API_BASE") or os.getenv("OPENAI_API_BASE", "https://llm.dsrs.illinois.edu/v1")
 
 # Check if API key is set
 if not openai_api_key:
